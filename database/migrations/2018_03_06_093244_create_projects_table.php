@@ -11,14 +11,21 @@ class CreateProjectsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up ()
     {
-        Schema::enableForeignKeyConstraints();
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->longText('description');
-            $table->foreign('company_id')->references('id')->on('company');
+            $table->longText('description')->nullable();
+            $table->integer('days')->nullable();
+
+            /// ID's ////
+            $table->integer('user_id')->unsigned();
+            $table->integer('company_id')->unsigned();
+            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('user_id')->references('id')->on('users');
+            /////////////
+
             $table->timestamps();
         });
     }
