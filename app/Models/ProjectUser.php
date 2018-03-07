@@ -4,17 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class ProjectUser extends Model
 {
     //
     protected $fillable = [
 
-        'body',
-        'url',
+        'name',
+        'description',
+        'company_id',
         'user_id',
-        'commentable_id',
-        'commentable_type',
+        'days',
 
     ];
-
 }
